@@ -19,7 +19,7 @@ const createServer = async (
   eventStore: EventStore,
   ipcSend: (channel: string, ...args: any[]) => void
 ) => {
-  publishService(serverConfig.serverName, port, fingerprint);
+  //publishService(serverConfig.serverName, port, fingerprint);
 
   const server = https.createServer({
     cert: await fs.readFile(certPath),
