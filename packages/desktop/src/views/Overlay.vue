@@ -6,7 +6,7 @@
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <div class="select-wrapper">
-          <ion-title>Overlay</ion-title>
+          <ion-title>Overlay Page</ion-title>
           <ion-select
             class="namespace-selector"
             :value="state.selectedNamespace"
@@ -41,6 +41,17 @@
               ></iframe>
             </ion-col>
           </ion-row>
+          <ion-row>
+            <ion-col align="center">
+                Open the overlay in a browser with the URL http://localhost:9902 or just open an extra window 
+                <a target="_blank" href="http://localhost:9902">here</a>.
+            </ion-col>
+            <ion-col align="center">
+              <ion-button color="danger" @click="resetClicker()"
+                >RESET CLICKER</ion-button
+              >
+            </ion-col>
+          </ion-row>
           <ion-item-divider>
             <ion-label> </ion-label>
           </ion-item-divider>
@@ -61,7 +72,7 @@
           <ion-row>
             <ion-col size="3">
               <ion-item>
-                <ion-label position="stacked">Set points Left</ion-label>
+                <ion-label position="stacked">Goals Left</ion-label>
                 <ion-input disabled="true">{{
                   state.incomingEvents
                     .getCurrentSet(state.selectedNamespace)
@@ -81,7 +92,7 @@
             </ion-col>
             <ion-col size="3">
               <ion-item>
-                <ion-label position="stacked">Set points Right</ion-label>
+                <ion-label position="stacked">Goals Right</ion-label>
                 <ion-input disabled="true">{{
                   state.incomingEvents
                     .getCurrentSet(state.selectedNamespace)
@@ -101,7 +112,7 @@
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col>
+            <ion-col align="center">
               <img class="logo" v-bind:class="{ empty: state.streamerLogo == '' }" v-bind:src="'asset://' + state.leftLogo" />
               <ion-button color="light" @click="uploadLogo('left')"
                 >Upload Logo</ion-button
@@ -110,7 +121,7 @@
                 >Clear Logo</ion-button
               >
             </ion-col>
-            <ion-col>
+            <ion-col align="center">
               <img class="logo" v-bind:class="{ empty: state.streamerLogo == '' }" v-bind:src="'asset://' + state.rightLogo" />
               <ion-button color="light" @click="uploadLogo('right')"
                 >Upload Logo</ion-button
@@ -125,23 +136,7 @@
           </ion-item-divider>
           <ion-row>
             <ion-col size="6">
-              <ion-label class="ion-text-wrap">Streamer Logo</ion-label>
-              <p>
-                Upload your Logo here. It will be displayed on the streaming
-                overlay. You can preview it
-                <a target="_blank" href="http://localhost:9902">here</a>.
-              </p>
-              <img
-                class="logo"
-                v-bind:class="{ empty: state.streamerLogo == '' }"
-                v-bind:src="'asset://' + state.streamerLogo"
-              />
-              <ion-button color="light" @click="uploadLogo('streamer')"
-                >Upload Streamer Logo</ion-button
-              >
-              <ion-button color="danger" @click="clearLogo('streamer')"
-                >Clear Logo</ion-button
-              >
+              <ion-label class="ion-text-wrap">! Under Construction for Live-Stats !</ion-label>
             </ion-col>
             <ion-col size="6">
               <div id="logs">
@@ -166,13 +161,6 @@
           <ion-item-divider>
             <ion-label> </ion-label>
           </ion-item-divider>
-          <ion-row>
-            <ion-col>
-              <ion-button color="danger" @click="resetClicker()"
-                >RESET CLICKER</ion-button
-              >
-            </ion-col>
-          </ion-row>
         </ion-grid>
       </div>
     </ion-content>
@@ -217,7 +205,7 @@ import {
 } from "@kickertech/common/game/ControlEvents";
 
 export default {
-  name: "Overlay",
+  name: "Overlays",
   components: {
     IonSelect,
     IonInput,
@@ -449,8 +437,8 @@ export default {
 }
 .overlay-preview {
   width: 100%;
-  border: 1px solid #666;
-  background: indianred;
+  border: 3px solid #666;
+  background: white;
 }
 
 .event-list {

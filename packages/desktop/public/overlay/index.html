@@ -34,16 +34,19 @@
       display: grid;
       font-family: 'Roboto', sans-serif;
       font-size: 2em;
-      grid-template: 80px / 10% 35% 4% 2% 4% 35% 10% 10%;
+      grid-template: 80px / 4% 37% 8% 2% 8% 37% 4%;
     }
-
-    .streamerlogo {
-      position: relative;
-      padding: 5px 10px;
-      background-color: #1d1d1d;
-      background-size: contain !important;
+    
+    /* soccer.css */
+    .containersoccer {
+      margin: 30px 0;
     }
-
+    .containersoccer div {
+      text-align: center;
+      grid-row: 1/2;
+    }
+    
+    /* general settings */
     .box {
       font-family: 'Roboto', cursive;
       font-size: .8em;
@@ -52,97 +55,65 @@
       text-align: center;
     }
 
-    .boxleftpoints,
-    .boxrightpoints,
-    .space {
-      font-weight: bold;
-    }
 
-    .space {
-      text-align: center;
-    }
-
-    .boxteamleft,
-    .boxteamright {
-      background: var(--bkg);
-    }
-
-    .boxtimer {
-      color: var(--textinverted);
-      background: var(--bkgdark);
-      grid-column: 7 / 8;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
-      line-height: 80px;
-    }
-
-    .boxleftpoints,
-    .boxrightpoints,
-    .space {
-      background: var(--bkggrey);
-    }
-
-    /* soccer.css */
-    .containersoccer div {
-      text-align: center;
-      grid-row: 1/2;
-    }
-
-    .streamerlogo {
+    /* elements */
+    
+    .leftend {
       grid-column: 1 / 2;
+      background: var(--bkgdark);
+      color: var(--textinverted);
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      line-height: 80px;
     }
 
     .boxteamleft {
       grid-column: 2 / 3;
+      background: var(--bkg);
     }
 
     .boxleftpoints {
       grid-column: 3 / 4;
-      text-align: right;
+      background: var(--bkggrey);
     }
 
     .space {
       grid-column: 4 / 5;
+      background: var(--bkggrey);
     }
 
     .boxrightpoints {
       grid-column: 5 / 6;
-      text-align: left;
+      background: var(--bkggrey);
     }
 
     .boxteamright {
       grid-column: 6 / 7;
+      background: var(--bkg);
     }
-
+    
+    .rightend {
+      grid-column: 7 / 8;
+      background: var(--bkgdark);
+      color: var(--textinverted);
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      line-height: 80px;
+    }
+   
+    .labelmoment {
+      grid-column: 8 / 9;
+    }
+    
     .labelmoment {
       grid-column: 8 / 9;
     }
 
-    .streamerlogo,
-    .streamerlogo:before {
-      border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
-    }
-
-    .boxleftpoints {
-      text-align: right;
-    }
-
-    .boxrightpoints {
-      text-align: left;
-    }
-
-    .boxleftpoints,
-    .boxrightpoints,
-    .space {
-      background: var(--bkggrey);
-    }
 
     .boxteamleft,
     .boxteamright,
-    .boxleftpoints,
-    .boxrightpoints,
-    .space {
+    .leftend,
+    .rightend {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -150,33 +121,23 @@
 
     .boxleftpoints,
     .space,
-    .boxrightpoints,
-    .streamerlogo:before {
-      background-color: #1d1d1d;
-      color: #fff;
-    }
-
-    .streamerlogo {
-      position: relative;
-    }
-
-    .streamerlogo img {
-      width: 80%;
-      margin: 0 auto;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
+    .boxrightpoints {
+      background-color: var(--bkgdark);
+      color: var(--bkgwhite);
+      font-size: 1em;
+      text-align: center;
+      font-weight: bold;
+      line-height: 80px;
     }
 
     .boxteamleft .logo,
     .boxteamright .logo {
       display: none;
-      width: 150px;
-      height: 150px;
+      height: 100%;
       margin: -35px 0 -35px 0;
       /*padding: 5px;*/
       /*border-radius: 100px;*/
-      background-color: #fff;
+      background-color: var(--bkgwhite);
     }
 
     .boxteamleft .name,
@@ -185,11 +146,10 @@
     }
 
     .boxteamleft {
-      justify-content: flex-end;
-    }
-
-    .boxteamright {
       justify-content: flex-start;
+    }
+    .boxteamright {
+      justify-content: flex-end;
       ;
     }
 
@@ -203,27 +163,31 @@
       border-right: solid 1vw #999;
     }
 
-    .containersoccer {
-      margin: 30px 0;
-    }
+
+    /* Match Points */
 
     .match_points {
       width: 100%;
       display: none;
       position: absolute;
-      top: 110%;
+      top: 65%;
       height: 30px;
       line-height: 30px;
       font-size: 16px;
-      background: var(--bkgdark);
+      /* background-color: var(--bkggrey); */
     }
-    .boxleftpoints .match_points {
-      right: 0;
-      width: 30px;
-    }
-    .boxrightpoints .match_points {
-      left: 0;
-      width: 30px;
+
+    .tournament_round {
+      grid-column: 1 / 2;
+      grid-column-start: span 3;
+      width: 100%;
+      display: none;
+      position: absolute;
+      top: 100%;
+      height: 30px;
+      line-height: 30px;
+      font-size: 16px;
+      background-color: var(--bkggrey);
     }
   </style>
 </head>
@@ -232,31 +196,37 @@
   <div id="app">
     <section id="boxes">
       <div class="container containersoccer">
-        <div class="streamerlogo">
-          <img  id="streamer_logo" />
-        </div>
-
+	<!-- 1 -->
+        <div class="box leftend"></div>
+	<!-- 2 -->
         <div class="box boxteamleft">
-          <div class="name" id="team_1"></div>
           <img class="logo" id="team_1_logo" />
+          <div class="name" id="team_1"></div>
         </div>
+	<!-- 3 -->
         <div class="box boxleftpoints">
           <div class="current_set" id="points_1"></div>
           <div class="match_points" id="matchpoints_1"></div>
         </div>
+	<!-- 4 -->
         <div class="space">-</div>
+	<!-- 5 -->
         <div class="box boxrightpoints">
           <div class="current_set" id="points_2"></div>
           <div class="match_points" id="matchpoints_2"></div>
         </div>
+	<!-- 6 -->
         <div class="box boxteamright">
-          <img class="logo" id="team_2_logo" />
           <div class="name" id="team_2"></div>
+          <img class="logo" id="team_2_logo" />
         </div>
-        <div class="box boxtimer" id="timer">:30</div>
+	<!-- 7 -->
+        <div class="box rightend"></div>
       </div>
     </section>
   </div>
+
+
   <script type="text/javascript">
     const renderLogo = (node, src) => {
       if (src) {
@@ -282,7 +252,6 @@
     }
 
     const render = (data) => {
-      renderLogo(document.querySelector("#streamer_logo"), data.streamerLogo)
       renderLogo(document.querySelector("#team_1_logo"), data.leftLogo)
       renderLogo(document.querySelector("#team_2_logo"), data.rightLogo)
       renderMatchpoints(document.querySelector("#matchpoints_1"), data.matchpointsLeft, data.matchpointsRight)
