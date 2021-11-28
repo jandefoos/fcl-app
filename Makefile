@@ -25,3 +25,10 @@ build-android:
 		npx jetify && \
 		ionic cap sync android && \
 		npm run android:build
+
+.PHONY: prepare
+prepare: 
+	npm install
+	cd packages/desktop && \
+		npm install && \
+		cd ..
