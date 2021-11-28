@@ -27,6 +27,7 @@ const createOverlayServer = (eventStore: EventStore) => {
     const namespace = "default"
     // right now, we only support overlays for the default namespace
     // multi-table support must be added here
+    const tname = eventStore.getTournamentName(namespace);
     const lname = eventStore.getLeftName(namespace);
     const rname = eventStore.getRightName(namespace);
     const llogo = eventStore.getLeftLogo(namespace);
@@ -51,6 +52,7 @@ const createOverlayServer = (eventStore: EventStore) => {
     })
 
     res.json({
+      tournamentName: tname,
       leftName: lname,
       rightName: rname,
       leftLogo: removeAppPrefix(llogo),

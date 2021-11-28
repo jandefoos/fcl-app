@@ -9,10 +9,12 @@ export const flush = async (store: EventStore, namespace: string) => {
     await fs.mkdir(baseDir);
   } catch (_) { /* */ }
 
+  const tournamentName = store.getTournamentName(namespace);
   const rightName = store.getRightName(namespace);
   const leftName = store.getLeftName(namespace);
   const currentSet = store.getCurrentSet(namespace);
   try {
+    await fs.writeFile(path.join(baseDir, "tournamentName"), tournamentName);
     await fs.writeFile(path.join(baseDir, "leftName"), leftName);
     await fs.writeFile(path.join(baseDir, "rightName"), rightName);
 

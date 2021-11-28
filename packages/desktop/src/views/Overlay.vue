@@ -43,7 +43,7 @@
           </ion-row>
           <ion-row>
             <ion-col align="center">
-                Open the overlay in a browser with the URL http://localhost:9902 or just open an extra window 
+                Open overlay at http://localhost:9902 or 
                 <a target="_blank" href="http://localhost:9902">here</a>.
             </ion-col>
             <ion-col align="center">
@@ -55,6 +55,12 @@
           <ion-item-divider>
             <ion-label> </ion-label>
           </ion-item-divider>
+          <ion-row>
+              <ion-item>
+                <ion-label position="stacked">Tournament or Match Name</ion-label>
+                <ion-input v-model="state.tournamentName"></ion-input>
+              </ion-item>
+          </ion-row>
           <ion-row>
             <ion-col>
               <ion-item>
@@ -109,26 +115,6 @@
                   )[1]
                 }}</ion-input>
               </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col align="center">
-              <img class="logo" v-bind:class="{ empty: state.streamerLogo == '' }" v-bind:src="'asset://' + state.leftLogo" />
-              <ion-button color="light" @click="uploadLogo('left')"
-                >Upload Logo</ion-button
-              >
-              <ion-button color="danger" @click="clearLogo('left')"
-                >Clear Logo</ion-button
-              >
-            </ion-col>
-            <ion-col align="center">
-              <img class="logo" v-bind:class="{ empty: state.streamerLogo == '' }" v-bind:src="'asset://' + state.rightLogo" />
-              <ion-button color="light" @click="uploadLogo('right')"
-                >Upload Logo</ion-button
-              >
-              <ion-button color="danger" @click="clearLogo('right')"
-                >Clear Logo</ion-button
-              >
             </ion-col>
           </ion-row>
           <ion-item-divider>
@@ -228,24 +214,21 @@ export default {
   setup() {
     const state = reactive({
       selectedNamespace: "default",
-      leftName: "",
-      leftLogo: "",
-      rightName: "",
-      rightLogo: "",
-      streamerLogo: "",
+      tournamentName: "Tournament C",
+      leftName: "Team A",
+      rightName: "Team B",
       connectedClients: 0,
       incomingEvents: new EventStore(),
     });
 
-    watch([() => state.leftName, () => state.rightName], () => {
+    watch([() => state.tournamentName, () => state.leftName, () => state.rightName], () => {
+      state.incomingEvents.setTournamentName(state.selectedNamespace, state.tournamentName);
       state.incomingEvents.setLeftName(state.selectedNamespace, state.leftName);
-      state.incomingEvents.setRightName(
-        state.selectedNamespace,
-        state.rightName
-      );
+      state.incomingEvents.setRightName(state.selectedNamespace, state.rightName);
       ipcRenderer.invoke("overlay:game:update", {
         namespace: state.selectedNamespace,
         data: {
+          tournamentName: state.incomingEvents.getTournamentName(state.selectedNamespace),
           leftName: state.incomingEvents.getLeftName(state.selectedNamespace),
           rightName: state.incomingEvents.getRightName(state.selectedNamespace),
         },
@@ -271,19 +254,13 @@ export default {
         ];
       });
       state.incomingEvents = new EventStore(store);
+      state.tournamentName = state.incomingEvents.getTournamentName(
+        state.selectedNamespace
+      );
       state.leftName = state.incomingEvents.getLeftName(
         state.selectedNamespace
       );
-      state.leftLogo = state.incomingEvents.getLeftLogo(
-        state.selectedNamespace
-      );
       state.rightName = state.incomingEvents.getRightName(
-        state.selectedNamespace
-      );
-      state.rightLogo = state.incomingEvents.getRightLogo(
-        state.selectedNamespace
-      );
-      state.streamerLogo = state.incomingEvents.getStreamerLogo(
         state.selectedNamespace
       );
 
@@ -327,48 +304,6 @@ export default {
       });
     };
 
-    const uploadLogo = (pos: string) => {
-      ipcRenderer
-        .invoke("overlay:fileselect:logo", {
-          position: pos,
-          namespace: state.selectedNamespace,
-        })
-        .then((result) => {
-          switch (pos) {
-            case "left":
-              state.leftLogo = result.file;
-              break;
-            case "right":
-              state.rightLogo = result.file;
-              break;
-            case "streamer":
-              state.streamerLogo = result.file;
-              break;
-          }
-        });
-    };
-
-    const clearLogo = (pos: string) => {
-      ipcRenderer
-        .invoke("overlay:clear:logo", {
-          position: pos,
-          namespace: state.selectedNamespace,
-        })
-        .then(() => {
-          switch (pos) {
-            case "left":
-              state.leftLogo = "";
-              break;
-            case "right":
-              state.rightLogo = "";
-              break;
-            case "streamer":
-              state.streamerLogo = "";
-              break;
-          }
-        });
-    };
-
     const matchPoints = (sets: Set[]) => {
       let lwon = 0;
       let rwon = 0;
@@ -406,8 +341,6 @@ export default {
       events: state.incomingEvents.get(state.selectedNamespace),
       getEventName,
       resetClicker,
-      uploadLogo,
-      clearLogo,
       matchPoints,
     };
   },

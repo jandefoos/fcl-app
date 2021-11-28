@@ -12,12 +12,14 @@
 
     :root {
       --bkggrey: #ccc;
-      --bkgdark: #1d1d1b;
+      --bkgdark: #000000;
+      --bkgdark2: #454545;
       --textinverted: #eee;
       --bkg: #eee;
       --bkgwhite: #fff;
       --red: #fc0303;
       --linee: #999;
+      --kixxred: #B02524;
     }
 
     body {
@@ -27,201 +29,122 @@
     * {
       margin: 0;
       padding: 0;
+      font-weight: bold;
+      font-size: 1.em;
     }
-
-    .container {
+    
+    .container_top {
       width: 100%;
       display: grid;
       font-family: 'Roboto', sans-serif;
-      font-size: 2em;
-      grid-template: 80px / 4% 37% 8% 2% 8% 37% 4%;
+      grid-template: 30px / 24% 14% 62%;
     }
-    
-    /* soccer.css */
-    .containersoccer {
-      margin: 30px 0;
+    .container_1 {
+      width: 100%;
+      display: grid;
+      font-family: 'Roboto', sans-serif;
+      grid-template: 40px / 4% 20% 8% 6% 62%;
     }
-    .containersoccer div {
-      text-align: center;
-      grid-row: 1/2;
+    .container_2 {
+      width: 100%;
+      display: grid;
+      font-family: 'Roboto', sans-serif;
+      grid-template: 40px / 4% 20% 8% 6% 62%;
     }
-    
-    /* general settings */
-    .box {
-      font-family: 'Roboto', cursive;
-      font-size: .8em;
-      font-weight: bold;
-      position: relative;
-      text-align: center;
+    .container_bottom {
+      width: 100%;
+      display: grid;
+      font-family: 'Roboto', sans-serif;
+      grid-template: 30px / 4% 34% 62%;
     }
 
+    /* colors & font */
 
-    /* elements */
-    
-    .leftend {
-      grid-column: 1 / 2;
+    .event {
+      background: var(--kixxred);
+      font-size: 1.2em;
+      color: var(--bkgwhite);
+    }
+    .boxteam {
+      background: var(--kixxred);
+    }
+    .boxgoals {
       background: var(--bkgdark);
-      color: var(--textinverted);
-      border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
-      line-height: 80px;
+      font-size: 1.5em;
+      color: var(--bkgwhite);
     }
-
-    .boxteamleft {
-      grid-column: 2 / 3;
-      background: var(--bkg);
+    .boxgames {
+      background-color: var(--bkgdark2);
+      color: var(--bkgwhite);
     }
-
-    .boxleftpoints {
-      grid-column: 3 / 4;
-      background: var(--bkggrey);
-    }
-
-    .space {
-      grid-column: 4 / 5;
-      background: var(--bkggrey);
-    }
-
-    .boxrightpoints {
-      grid-column: 5 / 6;
-      background: var(--bkggrey);
-    }
-
-    .boxteamright {
-      grid-column: 6 / 7;
-      background: var(--bkg);
+    .boxtournament {
+      background-color: var(--bkgdark2);
+      font-size: 1.2em;
+      color: var(--bkgwhite);
     }
     
-    .rightend {
-      grid-column: 7 / 8;
-      background: var(--bkgdark);
-      color: var(--textinverted);
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
-      line-height: 80px;
-    }
-   
-    .labelmoment {
-      grid-column: 8 / 9;
-    }
-    
-    .labelmoment {
-      grid-column: 8 / 9;
-    }
+    /* border & alignment */
 
-
-    .boxteamleft,
-    .boxteamright,
-    .leftend,
-    .rightend {
+    .boxteam, 
+    .boxgoals,
+    .boxgames,
+    .event,
+    .boxtournament {
+      border: solid 1.5px #FFF;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .boxleftpoints,
-    .space,
-    .boxrightpoints {
-      background-color: var(--bkgdark);
-      color: var(--bkgwhite);
-      font-size: 1em;
-      text-align: center;
-      font-weight: bold;
-      line-height: 80px;
-    }
-
-    .boxteamleft .logo,
-    .boxteamright .logo {
-      display: none;
-      height: 100%;
-      margin: -35px 0 -35px 0;
-      /*padding: 5px;*/
-      /*border-radius: 100px;*/
-      background-color: var(--bkgwhite);
-    }
-
-    .boxteamleft .name,
-    .boxteamright .name {
-      padding: 0 1vw;
-    }
-
-    .boxteamleft {
-      justify-content: flex-start;
-    }
-    .boxteamright {
-      justify-content: flex-end;
-      ;
-    }
-
-    .boxleftpoints,
-    .boxteamleft {
-      border-left: solid 1vw #999;
-    }
-
-    .boxrightpoints,
-    .boxteamright {
-      border-right: solid 1vw #999;
-    }
-
-
-    /* Match Points */
-
-    .match_points {
-      width: 100%;
-      display: none;
-      position: absolute;
-      top: 65%;
-      height: 30px;
-      line-height: 30px;
-      font-size: 16px;
-      /* background-color: var(--bkggrey); */
-    }
-
-    .tournament_round {
-      grid-column: 1 / 2;
-      grid-column-start: span 3;
-      width: 100%;
-      display: none;
-      position: absolute;
-      top: 100%;
-      height: 30px;
-      line-height: 30px;
-      font-size: 16px;
-      background-color: var(--bkggrey);
-    }
   </style>
 </head>
 
 <body>
   <div id="app">
     <section id="boxes">
-      <div class="container containersoccer">
+      <div class="container_top">
 	<!-- 1 -->
-        <div class="box leftend"></div>
+        <div></div>
 	<!-- 2 -->
-        <div class="box boxteamleft">
-          <img class="logo" id="team_1_logo" />
+        <div class="event" id="eventname">TIME OUT</div>
+      </div>
+      <div class="container_1">
+	<!-- 1 -->
+        <div></div>
+	<!-- 2 -->
+        <div class="box boxteam">
           <div class="name" id="team_1"></div>
         </div>
 	<!-- 3 -->
-        <div class="box boxleftpoints">
-          <div class="current_set" id="points_1"></div>
-          <div class="match_points" id="matchpoints_1"></div>
+        <div class="box boxgoals">
+	  <div class="current_game_1" id="points_1"></div>
         </div>
 	<!-- 4 -->
-        <div class="space">-</div>
-	<!-- 5 -->
-        <div class="box boxrightpoints">
-          <div class="current_set" id="points_2"></div>
-          <div class="match_points" id="matchpoints_2"></div>
+        <div class="box boxgames">
+          <div class="game_points_1" id="matchpoints_1"></div>
         </div>
-	<!-- 6 -->
-        <div class="box boxteamright">
+      </div>
+      <div class="container_2">
+	<!-- 1 -->
+        <div></div>
+	<!-- 2 -->
+        <div class="box boxteam">
           <div class="name" id="team_2"></div>
-          <img class="logo" id="team_2_logo" />
         </div>
-	<!-- 7 -->
-        <div class="box rightend"></div>
+	<!-- 3 -->
+        <div class="box boxgoals">
+          <div class="current_game_2" id="points_2"></div>
+        </div>
+	<!-- 4 -->
+        <div class="box boxgames">
+          <div class="game_points_2" id="matchpoints_2"></div>
+        </div>
+      </div>
+      <div class="container_bottom">
+	<!-- 1 -->
+        <div></div>
+	<!-- 2 -->
+        <div class="boxtournament" id="tournamentname"></div>
       </div>
     </section>
   </div>
@@ -252,11 +175,11 @@
     }
 
     const render = (data) => {
-      renderLogo(document.querySelector("#team_1_logo"), data.leftLogo)
-      renderLogo(document.querySelector("#team_2_logo"), data.rightLogo)
       renderMatchpoints(document.querySelector("#matchpoints_1"), data.matchpointsLeft, data.matchpointsRight)
       renderMatchpoints(document.querySelector("#matchpoints_2"), data.matchpointsRight, data.matchpointsLeft)
 
+      document.querySelector("#eventname").innerText = data.eventName || "test e"
+      document.querySelector("#tournamentname").innerText = data.tournamentName || ""
       document.querySelector("#team_1").innerText = data.leftName || ""
       document.querySelector("#team_2").innerText = data.rightName || ""
       document.querySelector("#points_1").innerText = data.leftScore || "0"

@@ -29,6 +29,7 @@ export const handleGameUpdate = (eventStore: EventStore) => async (
 ) => {
   logger.info("overlay:game:update", msg);
   const { namespace, data } = msg;
+  eventStore.setTournamentName(namespace, data.tournamentName);
   eventStore.setLeftName(namespace, data.leftName);
   eventStore.setRightName(namespace, data.rightName);
   flush(eventStore, namespace);

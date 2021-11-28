@@ -2,6 +2,7 @@ import { GameEvent, Set } from "../game";
 
 type EventData = {
   resourceVersion: number;
+  tournamentName: string;
   leftName: string;
   leftLogo: string;
   rightName: string;
@@ -13,6 +14,7 @@ type EventData = {
 export const defaultData = () => {
   return {
     resourceVersion: 0,
+    tournamentName: "",
     leftName: "",
     leftLogo: "",
     rightName: "",
@@ -43,6 +45,12 @@ export class EventStore {
     this.incrementVersion(namespace);
   }
 
+  setTournamentName(namespace: string, name: string) {
+    if (this.data[namespace]) {
+      this.data[namespace].tournamentName = name;
+    }
+  }
+
   setLeftName(namespace: string, name: string) {
     if (this.data[namespace]) {
       this.data[namespace].leftName = name;
@@ -65,6 +73,13 @@ export class EventStore {
   getLeftName(namespace: string) {
     if (this.data[namespace]) {
       return this.data[namespace].leftName;
+    }
+    return "";
+  }
+
+  getTournamentName(namespace: string) {
+    if (this.data[namespace]) {
+      return this.data[namespace].tournamentName;
     }
     return "";
   }
