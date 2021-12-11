@@ -6,7 +6,7 @@
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <div class="select-wrapper">
-          <ion-title>Scoreboard</ion-title>
+          <ion-title>Statistics</ion-title>
           <ion-select
             class="namespace-selector"
             :value="state.selectedNamespace"
@@ -27,7 +27,7 @@
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Overlay</ion-title>
+          <ion-title size="large">OverlayStats</ion-title>
         </ion-toolbar>
       </ion-header>
 
@@ -56,12 +56,10 @@
             <ion-label> </ion-label>
           </ion-item-divider>
           <ion-row>
-            <ion-col>
               <ion-item>
                 <ion-label position="stacked">Tournament or Match Name</ion-label>
                 <ion-input v-model="state.tournamentName"></ion-input>
               </ion-item>
-            </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
@@ -77,9 +75,6 @@
               </ion-item>
             </ion-col>
           </ion-row>
-          <ion-item-divider>
-            <ion-label> </ion-label>
-          </ion-item-divider>
           <ion-row>
             <ion-col size="3">
               <ion-item>
@@ -87,7 +82,7 @@
                 <ion-input disabled="true">{{
                   state.incomingEvents
                     .getCurrentSet(state.selectedNamespace)
-                    .score()[0]                
+                    .score()[0]
                 }}</ion-input>
               </ion-item>
             </ion-col>
@@ -122,17 +117,14 @@
               </ion-item>
             </ion-col>
           </ion-row>
+          <ion-item-divider>
+            <ion-label> </ion-label>
+          </ion-item-divider>
           <ion-row>
-            <ion-col size="12">
-              <ion-item>
-                <ion-label position="stacked">Last Event</ion-label>
-                <ion-input disabled="true">{{
-                  state.incomingEvents.getSets(
-                    state.selectedNamespace
-                  )[0].events.slice(-1)[0].toString()
-                }}</ion-input>
-              </ion-item>
-
+            <ion-col size="6">
+              <ion-label class="ion-text-wrap">! Under Construction for Live-Stats !</ion-label>
+            </ion-col>
+            <ion-col size="6">
               <div id="logs">
                 <h3>Event Log</h3>
                 <div
@@ -150,9 +142,11 @@
                   </ul>
                 </div>
               </div>
-            
             </ion-col>
           </ion-row>
+          <ion-item-divider>
+            <ion-label> </ion-label>
+          </ion-item-divider>
         </ion-grid>
       </div>
     </ion-content>
@@ -195,6 +189,7 @@ import {
   EVENT_RESET,
   EVENT_UNDO,
 } from "@kickertech/common/game/ControlEvents";
+
 
 export default {
   name: "Overlays",

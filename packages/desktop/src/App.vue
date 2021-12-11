@@ -101,8 +101,15 @@ export default defineComponent({
         show: true,
       },
       {
-        title: "Overlay",
+        title: "Overlay Score",
         url: "/overlay",
+        iosIcon: desktopOutline,
+        mdIcon: desktopSharp,
+        show: true,
+      },
+      {
+        title: "Overlay Stats",
+        url: "/overlaystats",
         iosIcon: desktopOutline,
         mdIcon: desktopSharp,
         show: true,

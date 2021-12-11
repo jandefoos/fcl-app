@@ -106,7 +106,7 @@
 	<!-- 1 -->
         <div></div>
 	<!-- 2 -->
-        <div class="event" id="eventname">TIME OUT</div>
+        <div class="event" id="eventname"></div>
       </div>
       <div class="container_1">
 	<!-- 1 -->
@@ -178,7 +178,7 @@
       renderMatchpoints(document.querySelector("#matchpoints_1"), data.matchpointsLeft, data.matchpointsRight)
       renderMatchpoints(document.querySelector("#matchpoints_2"), data.matchpointsRight, data.matchpointsLeft)
 
-      document.querySelector("#eventname").innerText = data.eventName || "test e"
+      document.querySelector("#eventname").innerText = data.eventName || "for Events"
       document.querySelector("#tournamentname").innerText = data.tournamentName || ""
       document.querySelector("#team_1").innerText = data.leftName || ""
       document.querySelector("#team_2").innerText = data.rightName || ""

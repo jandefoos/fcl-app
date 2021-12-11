@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "@ionic/vue-router";
 import { RouteRecordRaw } from "vue-router";
 import Clicker from "@kickertech/common/views/Clicker.vue"
 import Overlay from "../views/Overlay.vue";
+import Overlaystats from "../views/OverlayStats.vue";
 import Discovery from "../views/Discovery.vue";
 import Settings from "../views/Settings.vue";
 
@@ -17,6 +18,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/overlay",
     component: Overlay,
+  },
+  {
+    path: "/overlaystats",
+    component: Overlaystats,
   },
   {
     path: "/discovery",
