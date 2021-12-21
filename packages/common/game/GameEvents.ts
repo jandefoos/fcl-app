@@ -69,7 +69,7 @@ export class GameEvent {
   }
 
   toString(): string {
-    return `${typeToName[this.type]}: ${this.timestamp}`;
+    return `${typeToName[this.type]} - ${this.timestamp}`;
   }
 
   toObject(): Record<string, any> {
